@@ -92,5 +92,5 @@ jupyter notebook A-B_Testing_analysis.ipynb
 
 ---
 
-*Built as a portfolio project demonstrating end-to-end A/B testing — from data generation to business recommendation.*
+*Built as a portfolio project demonstrating end-to-end A/B testing — from data generation to business recommendation.*  
 *Pune, India*
