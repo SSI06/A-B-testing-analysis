@@ -1,4 +1,5 @@
-# Did a New Website Design Actually Work? I Built a Test to Find Out.
+# A/B Testing Analysis
+Website UI Conversion Study
 
 > **TL;DR** — I designed and ran a full A/B test on 10,000 users. The new UI increased purchases by 37%. The result was statistically significant. At scale, that's worth $274,000 extra per month. Here's exactly how I figured that out.
 
