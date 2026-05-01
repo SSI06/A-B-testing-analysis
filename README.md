@@ -1,79 +1,96 @@
 # A/B Testing Analysis — Website UI Conversion Study
 
-![Python](https://img.shields.io/badge/Python-3.9+-blue) ![Statistics](https://img.shields.io/badge/Stats-Z--test-green) ![Status](https://img.shields.io/badge/Status-Complete-brightgreen)
+> Designed and executed a full-cycle A/B test on 10,000 simulated users to determine whether a redesigned e-commerce interface drives higher purchase conversion — from hypothesis through to statistical validation and revenue impact modelling.
 
-An end-to-end A/B test to determine whether a redesigned e-commerce UI significantly improves purchase conversion rates.
+![Python](https://img.shields.io/badge/Python-3.9+-20B2AA?style=flat-square&logo=python&logoColor=white)
+![Scipy](https://img.shields.io/badge/SciPy-Statistical%20Testing-2E86AB?style=flat-square)
+![Result](https://img.shields.io/badge/Result-Statistically%20Significant-2da44e?style=flat-square)
+![Impact](https://img.shields.io/badge/Revenue%20Impact-%2B%24274K%2Fmo-f0a500?style=flat-square)
 
 ---
 
-## Overview
+## What I Did
 
-Two groups of 5,000 simulated users were exposed to either the current design (control) or a new design (treatment). Conversion events were recorded and analysed using a two-sample proportions Z-test to determine whether the observed improvement was statistically significant.
+I built a complete A/B testing pipeline from scratch — no templates, no shortcuts. The goal was to simulate a real product team decision: should we ship the new UI or stick with the old one?
 
-## Results at a glance
+The answer: **ship it**.
 
-| Metric | Control (old UI) | Treatment (new UI) |
-|---|---|---|
+---
+
+## Results
+
+| Metric | Control (Old UI) | Treatment (New UI) |
+|--------|------------------|--------------------|
 | Users | 5,000 | 5,000 |
-| Conversions | 578 | 793 |
-| Conversion rate | 11.56% | 15.86% |
-| Relative uplift | — | +37.2% |
-| P-value (Z-test) | — | 0.000027 ✓ |
-| 95% confidence interval | — | [+2.81%, +5.79%] |
+| Conversions | 578 | **793** |
+| Conversion Rate | 11.56% | **15.86%** |
+| Relative Uplift | — | **+37.2%** |
+| P-value | — | **0.000027** ✓ |
+| 95% Confidence Interval | — | [+2.81%, +5.79%] |
 
-**Conclusion:** The new design produces a statistically significant improvement across all device types (mobile, desktop, tablet). Estimated additional revenue: ~$274,000/month at 100K monthly visitors.
+**At 100K monthly visitors and a $65 average order value, this uplift translates to ~$274,000 in additional monthly revenue.**
 
-## Project structure
-
-```
-ab-testing-analysis/
-├── A-B_Testing_analysis.ipynb   ← main notebook (all steps)
-├── ab_test_data.csv             ← generated dataset (10,000 rows)
-├── eda_charts.png               ← exploratory analysis charts
-├── requirements.txt             ← Python dependencies
-└── README.md
-```
-
-## How to run
-
-```bash
-# 1. Clone the repo
-git clone https://github.com/YOUR_USERNAME/ab-testing-analysis.git
-cd ab-testing-analysis
-
-# 2. Install dependencies
-pip install -r requirements.txt
-
-# 3. Open the notebook
-jupyter notebook A-B_Testing_analysis.ipynb
-```
+---
 
 ## Methodology
 
-1. **Data generation** — 10,000 synthetic users with realistic conversion rates (12% control, 15% treatment) based on e-commerce benchmarks.
-2. **Data validation** — checked for missing values, duplicates, and group balance before any analysis.
-3. **Exploratory analysis** — conversion rates by group and by device type.
-4. **Statistical test** — one-tailed two-sample proportions Z-test (`statsmodels.stats.proportion.proportions_ztest`), α = 0.05.
-5. **Business impact** — uplift translated into estimated revenue using assumed monthly traffic (100K) and average order value ($65).
+```
+01  Data Generation    →  10,000 synthetic users, binomial sampling, fixed seed
+02  Data Validation    →  null checks, duplicate detection, group balance check
+03  Exploratory EDA    →  conversion by group + device type (mobile/desktop/tablet)
+04  Statistical Test   →  one-tailed two-sample proportions Z-test, α = 0.05
+05  Business Impact    →  revenue projection + rollout recommendation
+```
 
-## Tech stack
+The new design outperformed control on **every single device type** — not just overall. That consistency is what makes this result convincing.
 
-| Library | Purpose |
-|---|---|
-| `pandas` | Data manipulation |
-| `numpy` | Random data generation |
-| `scipy` | Statistical testing |
+---
+
+## Project Structure
+
+```
+ab-testing-analysis/
+├── A-B_Testing_analysis.ipynb   ← full analysis with step-by-step commentary
+├── ab_test_data.csv             ← generated dataset (10,000 rows)
+├── eda_charts.png               ← 3-panel exploratory visualisation
+├── requirements.txt             ← pinned dependencies
+└── README.md
+```
+
+---
+
+## How to Run
+
+```bash
+git clone https://github.com/YOUR_USERNAME/ab-testing-analysis.git
+cd ab-testing-analysis
+pip install -r requirements.txt
+jupyter notebook A-B_Testing_analysis.ipynb
+```
+
+---
+
+## Tech Stack
+
+| Library | Role |
+|---------|------|
+| `pandas` | Data wrangling & EDA |
+| `numpy` | Synthetic data generation |
+| `scipy` | Statistical primitives |
 | `statsmodels` | Proportions Z-test |
-| `matplotlib` | Charts and visualisations |
-| `seaborn` | Chart styling |
+| `matplotlib` | Data visualisation |
+| `seaborn` | Chart aesthetics |
 
-## Key findings
+---
 
-- The treatment group outperformed control on **every device type**
-- The p-value (0.000027) is well below the 0.05 threshold — the result is not due to chance
-- Even the lower bound of the 95% CI (+2.81%) represents a meaningful business gain
-- **Recommendation:** roll out the new design to 100% of users
+## What I Learned / Would Improve Next
 
-## Notes
+- Add a **power analysis** to formally justify the sample size of 5,000
+- Run the test for a minimum of **2 full weeks** to account for day-of-week variation
+- Apply **Bonferroni correction** when running sub-group tests (device segments)
+- Validate traffic and AOV assumptions with real business data before final rollout
 
-This project uses synthetic data generated to reflect realistic e-commerce conversion benchmarks. It was built as a learning exercise demonstrating a complete A/B testing workflow from data generation through to business recommendation
+---
+
+*Built as a portfolio project demonstrating end-to-end A/B testing — from data generation to business recommendation.*
+*Pune, India*
